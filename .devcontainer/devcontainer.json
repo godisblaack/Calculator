@@ -16,7 +16,10 @@
     "cd node && npm install express", // Install express in the node folder
     "cd frontend && npm install", // Install frontend dependencies
     "npm install -g node-gyp", // Install global dependencies if necessary
-    "npm install -g concurrently" // Optional: Install global tools for running multiple processes
+    "npm install -g concurrently", // Optional: Install global tools for running multiple processes
+    "cd node && npm install node-addon-api",
+    "npm install cors",
+    "npm install node-addon-api"
     ],
   "postStartCommand": [
     "node-gyp configure",  // Configure native build
