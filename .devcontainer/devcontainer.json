@@ -1,7 +1,5 @@
 {
   "name": "Calculator Dev Environment",
-  "dockerFile": "Dockerfile", 
-  "context": "..",
   "customizations": {
     "vscode": {
       "settings": {
@@ -16,7 +14,7 @@
     }
   },
   "postCreateCommand": [
-    "npm install",
+    "npm install", // Install dependencies in the main package.json
     "cd node && npm install", // Install dependencies in the node folder (if needed)
     "npm install -g node-gyp", // Install global dependencies if necessary
     "npm install -g concurrently" // Optional: Install global tools for running multiple processes
@@ -24,6 +22,5 @@
   "postStartCommand": [
     "node-gyp configure",  // Configure native build
     "node-gyp build"      // Build the native modules (if applicable)
-  ],
-  "remoteUser": "node"  // Ensures you're running as the 'node' user (this is typical for Dockerized Node.js environments)
+  ]
 }
