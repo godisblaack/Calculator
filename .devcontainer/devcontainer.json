@@ -7,22 +7,22 @@
         "editor.formatOnSave": true
       },
       "extensions": [
-        "ms-vscode.cpptools-extension-pack"
+        "ms-vscode.cpptools-extension-pack",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.node-debug2"
       ]
     }
   },
   "postCreateCommand": [
-    "npm install", // Install dependencies in the main package.json
-    "cd node && npm install express", // Install express in the node folder
-    "cd frontend && npm install", // Install frontend dependencies
-    "npm install -g node-gyp", // Install global dependencies if necessary
-    "npm install -g concurrently", // Optional: Install global tools for running multiple processes
-    "cd node && npm install node-addon-api",
-    "npm install cors",
-    "npm install node-addon-api"
-    ],
+    "npm install", 
+    "cd node && npm install express cors node-addon-api", 
+    "cd frontend && npm install react-scripts", 
+    "npm install -g node-gyp", 
+    "npm install -g concurrently"
+  ],
   "postStartCommand": [
-    "node-gyp configure",  // Configure native build
-    "node-gyp build"      // Build the native modules (if applicable)
-  ]
+    "concurrently \"npm run start-api\" \"npm run start-frontend\""
+  ],
+  "remoteUser": "node"
 }
