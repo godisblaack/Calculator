@@ -7,22 +7,28 @@
         "editor.formatOnSave": true
       },
       "extensions": [
-        "ms-vscode.cpptools-extension-pack",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "ms-vscode.node-debug2"
+        "ms-vscode.cpptools-extension-pack"
       ]
     }
   },
   "postCreateCommand": [
-    "npm install", 
-    "cd node && npm install express cors node-addon-api", 
-    "cd frontend && npm install react-scripts", 
-    "npm install -g node-gyp", 
-    "npm install -g concurrently"
+    // Install global dependencies first
+    "npm install -g node-gyp concurrently",
+
+    // Install backend dependencies (node)
+    "cd node && npm install express cors node-addon-api",
+
+    // Install frontend dependencies (react)
+    "cd frontend && npm install react-scripts",
+
+    // Install other project dependencies in the root directory
+    "npm install"
   ],
   "postStartCommand": [
+    // Use concurrently to start both API and frontend in parallel
     "concurrently \"npm run start-api\" \"npm run start-frontend\""
   ],
-  "remoteUser": "node"
+  "remoteUser": "codespace",
+  "forwardPorts": [3000, 3001],
+  "shutdownAction": "stopCompose"
 }
