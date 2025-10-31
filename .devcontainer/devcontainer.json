@@ -9,9 +9,21 @@
         "editor.formatOnSave": true
       },
       "extensions": [
-        "ms-vscode.cpptools-extension-pack"
+        "ms-vscode.cpptools-extension-pack",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
       ]
     }
   },
-  "postCreateCommand": "npm install"
+  "postCreateCommand": [
+    "npm install",
+    "cd node && npm install", // Install dependencies in the node folder (if needed)
+    "npm install -g node-gyp", // Install global dependencies if necessary
+    "npm install -g concurrently" // Optional: Install global tools for running multiple processes
+  ],
+  "postStartCommand": [
+    "node-gyp configure",  // Configure native build
+    "node-gyp build"      // Build the native modules (if applicable)
+  ],
+  "remoteUser": "node"  // Ensures you're running as the 'node' user (this is typical for Dockerized Node.js environments)
 }
