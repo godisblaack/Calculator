@@ -1,0 +1,25 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-addon": "cd node && node-gyp configure && node-gyp build",
+    "start-api": "node node/index.js",
+    "start-frontend": "cd frontend && npm start",
+    "start": "concurrently \"npm run start-api\" \"npm run start-frontend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "node-addon-api": "^8.5.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "node-gyp": "^11.5.0"
+  }
+}
