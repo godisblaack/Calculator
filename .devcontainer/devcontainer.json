@@ -1,0 +1,17 @@
+{
+  "name": "Calculator Dev Environment",
+  "dockerFile": "Dockerfile", 
+  "context": "..",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "ms-vscode.cpptools-extension-pack"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install"
+}
