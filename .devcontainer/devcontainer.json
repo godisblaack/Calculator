@@ -11,20 +11,8 @@
       ]
     }
   },
-  "postCreateCommand": [
-    // Install global dependencies first
-    "npm install -g node-gyp concurrently",
-
-    // Install backend dependencies (node)
-    "cd node && npm install express cors node-addon-api",
-
-    // Install frontend dependencies (react)
-    "cd frontend && npm install react-scripts",
-
-    // Install other project dependencies in the root directory
-    "npm install"
-  ],
-  "postStartCommand": "npm start",
+  "postCreateCommand": "npm install -g node-gyp concurrently && cd node && npm install express cors node-addon-api && cd ../frontend && npm install && cd .. && npm install && npm run build-addon",
+  "postAttachCommand": "npm start",
   "remoteUser": "codespace",
   "forwardPorts": [3000, 3001],
   "shutdownAction": "stopCompose"
