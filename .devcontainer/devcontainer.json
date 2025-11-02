@@ -24,10 +24,7 @@
     // Install other project dependencies in the root directory
     "npm install"
   ],
-  "postStartCommand": [
-    // Use concurrently to start both API and frontend in parallel
-    "concurrently \"npm run start-api\" \"npm run start-frontend\""
-  ],
+  "postStartCommand": "npm start",
   "remoteUser": "codespace",
   "forwardPorts": [3000, 3001],
   "shutdownAction": "stopCompose"
